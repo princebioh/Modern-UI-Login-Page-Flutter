@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
-import '../widgets/sign_in_button.dart';
+import '../widgets/image_button.dart';
+import '../widgets/signin_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -52,15 +53,18 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
 
-                // Password Input Fiels
+                // Password Input Field
                 InputField(
                   textHint: "Password",
                   showText: true,
                   controller: _passwordController,
                 ),
+
                 const SizedBox(
                   height: 10,
                 ),
+
+                // Forgot Password Text
                 Padding(
                   padding: const EdgeInsets.only(left: 250),
                   child: Text(
@@ -68,46 +72,61 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 15, color: Colors.grey[700]),
                   ),
                 ),
+
                 const SizedBox(
                   height: 25,
                 ),
+
+                // Sign In Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: MaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    color: Colors.black,
-                    onPressed: () {},
-                    minWidth: 400,
-                    height: 75,
-                    child: const Text(
-                      "Sign In",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  child: SignInButton(),
                 ),
                 const SizedBox(
-                  height: 70,
+                  height: 50,
                 ),
-                const Divider(
-                  thickness: 1.5,
+
+                // Or Continue With Divider text
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey.shade400,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          'Or continue with',
+                          style: TextStyle(color: Colors.grey.shade700),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey.shade400,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+
                 const SizedBox(
                   height: 70,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    SignInButton(
+                    ImageButton(
                       imageLocation: "assets/images/google.png",
                     ),
                     SizedBox(
                       width: 40,
                     ),
-                    SignInButton(
+                    ImageButton(
                       imageLocation: "assets/images/apple.png",
                     ),
                   ],

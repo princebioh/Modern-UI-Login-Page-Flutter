@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SignInButton extends StatelessWidget {
-  const SignInButton({
+class ImageButton extends StatelessWidget {
+  const ImageButton({
     super.key,
     required this.imageLocation,
   });
@@ -15,7 +15,7 @@ class SignInButton extends StatelessWidget {
       height: 100,
       minWidth: 100,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child:  Image(
+      child: Image(
         image: AssetImage(imageLocation),
         height: 50,
       ),
