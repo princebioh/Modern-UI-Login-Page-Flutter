@@ -6,16 +6,19 @@ class InputField extends StatelessWidget {
     required this.showText,
     required this.textHint,
     required this.controller,
+    required this.keyboardType,
   });
   final bool showText;
   final String textHint;
   final TextEditingController controller;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
+        keyboardType: keyboardType,
         obscureText: showText,
         controller: controller,
         decoration: InputDecoration(

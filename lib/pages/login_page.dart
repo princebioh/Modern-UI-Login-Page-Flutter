@@ -54,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   textHint: "Username",
                   showText: false,
                   controller: _usernameController,
+                  keyboardType: TextInputType.emailAddress,
                 ),
 
                 const SizedBox(
@@ -65,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   textHint: "Password",
                   showText: true,
                   controller: _passwordController,
+                  keyboardType: TextInputType.text,
                 ),
 
                 const SizedBox(
@@ -74,9 +76,12 @@ class _LoginPageState extends State<LoginPage> {
                 // Forgot Password Text
                 Padding(
                   padding: const EdgeInsets.only(left: 250),
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(fontSize: 15, color: Colors.grey[700]),
+                  child: MaterialButton(
+                    onPressed: () {},
+                    child: const Text(
+                      "Forgot Password?",
+                      style: TextStyle(fontSize: 15, color: Colors.blue),
+                    ),
                   ),
                 ),
 
