@@ -21,7 +21,7 @@ class InputField extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.grey.shade200,
-          enabledBorder: OutlineInputBorder(
+          enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
           focusedBorder: OutlineInputBorder(
@@ -29,7 +29,7 @@ class InputField extends StatelessWidget {
           ),
           hintText: textHint,
           hintStyle: TextStyle(color: Colors.grey.shade500),
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
       ),
     );

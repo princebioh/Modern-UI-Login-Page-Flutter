@@ -14,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   // Controllers
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,22 +28,28 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 50,
                 ),
+
+                // Main Icon Logo
                 const Icon(
                   Icons.lock,
                   size: 100,
                 ),
+
                 const SizedBox(
                   height: 50,
                 ),
+
+                // Welcome Text
                 Text(
                   "Welcome back, you have been missed!",
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
+
                 const SizedBox(
                   height: 25,
                 ),
 
-                // UserName Input Field
+                // UserName TextInput Field
                 InputField(
                   textHint: "Username",
                   showText: false,
@@ -53,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
 
-                // Password Input Field
+                // Password TextInput Field
                 InputField(
                   textHint: "Password",
                   showText: true,
@@ -78,15 +85,16 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 // Sign In Button
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
                   child: SignInButton(),
                 ),
+
                 const SizedBox(
                   height: 50,
                 ),
 
-                // Or Continue With Divider text
+                // (Or Continue With) Divider text
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
@@ -133,20 +141,24 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
+
                 const SizedBox(
                   height: 50,
                 ),
+
+                // Footer Text
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("Not a member?"),
                     TextButton(
-                        style: TextButton.styleFrom(),
-                        onPressed: () {},
-                        child: const Text(
-                          "Register now",
-                          style: TextStyle(color: Colors.blue),
-                        ))
+                      style: TextButton.styleFrom(),
+                      onPressed: () {},
+                      child: const Text(
+                        "Register now",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
                   ],
                 ),
               ],

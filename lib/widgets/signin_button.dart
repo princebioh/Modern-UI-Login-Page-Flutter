@@ -13,8 +13,7 @@ class _SignInButtonState extends State<SignInButton> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Colors.black,
       onPressed: () {},
       minWidth: 400,
@@ -22,10 +21,10 @@ class _SignInButtonState extends State<SignInButton> {
       child: const Text(
         "Sign In",
         style: TextStyle(
-          
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold),
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
