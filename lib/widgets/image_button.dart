@@ -11,7 +11,7 @@ class ImageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: () {},
-      color: Colors.white,
+      color: Colors.grey.shade200,
       height: 100,
       minWidth: 100,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
