@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class SignInButton extends StatefulWidget {
   const SignInButton({
     super.key,
+    required this.onPressed,
   });
+  final void Function()? onPressed;
 
   @override
   State<SignInButton> createState() => _SignInButtonState();
@@ -15,7 +17,7 @@ class _SignInButtonState extends State<SignInButton> {
     return MaterialButton(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Colors.black,
-      onPressed: () {},
+      onPressed: widget.onPressed,
       minWidth: 400,
       height: 75,
       child: const Text(

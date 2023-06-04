@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui_page/routes/routes.dart';
 
-import 'pages/login_page.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -12,7 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: Colors.grey[300]),
       debugShowCheckedModeBanner: false,
       initialRoute: RouteManager.loginPage,
       onGenerateRoute: RouteManager.routeGenerator,

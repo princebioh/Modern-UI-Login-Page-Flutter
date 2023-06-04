@@ -9,9 +9,9 @@ class RouteManager {
   static Route<dynamic> routeGenerator(RouteSettings settings) {
     switch (settings.name) {
       case loginPage:
-        return MaterialPageRoute(builder: (context) => LoginPage());
+        return MaterialPageRoute(builder: (context) => const LoginPage());
       case dashBoard:
-        return MaterialPageRoute(builder: (context) => DashBoard());
+        return MaterialPageRoute(builder: (context) => const DashBoard());
       default:
         throw const FormatException("Page Not Found");
     }

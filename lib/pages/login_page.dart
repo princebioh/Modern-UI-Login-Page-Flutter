@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_ui_page/routes/routes.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
 import '../widgets/image_button.dart';
 import '../widgets/signin_button.dart';
@@ -18,7 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
       body: SingleChildScrollView(
         child: SafeArea(
           child: Center(
@@ -90,9 +90,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 // Sign In Button
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: SignInButton(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: SignInButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(RouteManager.dashBoard);
+                    },
+                  ),
                 ),
 
                 const SizedBox(
