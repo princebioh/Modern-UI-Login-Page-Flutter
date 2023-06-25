@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:login_ui_page/auth/auth.dart';
 import 'package:login_ui_page/routes/routes.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
 import '../widgets/image_button.dart';
 import '../widgets/signin_button.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   // Controllers
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
 
                 // Main Icon Logo
@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
 
                 // Welcome Text
@@ -74,6 +74,18 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10,
                 ),
 
+                // Confirm Password TextInput Field
+                InputField(
+                  textHint: "Confirm Password",
+                  showText: true,
+                  controller: _confirmPasswordController,
+                  keyboardType: TextInputType.text,
+                ),
+
+                const SizedBox(
+                  height: 5,
+                ),
+
                 // Forgot Password Text
                 Padding(
                   padding: const EdgeInsets.only(left: 250),
@@ -87,25 +99,21 @@ class _LoginPageState extends State<LoginPage> {
                 ),
 
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
 
                 // Sign In Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: SignInButton(
-                    onPressed: () async {
-                      await Authenticate().emailSignIn(
-                        email: _usernameController.text,
-                        password: _passwordController.text,
-                      );
+                    onPressed: () {
                       // Navigator.of(context).pushNamed(RouteManager.dashBoard);
                     },
                   ),
                 ),
 
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
 
                 // (Or Continue With) Divider text

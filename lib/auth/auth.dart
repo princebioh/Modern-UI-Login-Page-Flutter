@@ -37,4 +37,9 @@ class Authenticate {
       print(e.toString());
     }
   }
+
+  // Method so Sign Out
+  Future<void> signOut() async {
+    await _auth.signOut();
+  }
 }
