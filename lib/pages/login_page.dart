@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui_page/auth/auth.dart';
-import 'package:login_ui_page/routes/routes.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
 import '../widgets/dialogs.dart';
 import '../widgets/image_button.dart';
@@ -98,12 +97,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: SignInButton(
                     text: "Sign In",
                     onPressed: () async {
+                      // Display Circle Progress
                       loadingCircle(context: context);
-                      await Authenticate().emailSignIn(
+
+                      String? errMes = await Authenticate().emailSignIn(
                         email: _usernameController.text,
                         password: _passwordController.text,
                       );
+
                       Navigator.pop(context);
+
+                      if (errMes != null) {
+                        showErrorMessage(
+                          errorMessage: errMes,
+                          context: context,
+                        );
+                      }
                     },
                   ),
                 ),

@@ -15,7 +15,7 @@ class DashBoard extends StatelessWidget {
             onPressed: () async {
               await Authenticate().signOut();
             },
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
           ),
         ],
       ),

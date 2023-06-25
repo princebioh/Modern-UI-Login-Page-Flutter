@@ -9,7 +9,7 @@ showErrorMessage({
     builder: (context) {
       return AlertDialog(
         title: Text(errorMessage),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.purple[200],
       );
     },
   );

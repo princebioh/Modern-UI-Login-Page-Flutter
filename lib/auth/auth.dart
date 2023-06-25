@@ -5,23 +5,23 @@ class Authenticate {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // Create Method for Sign In
-  Future<void> emailSignIn(
+  Future<String?> emailSignIn(
       {required String email, required String password}) async {
     try {
       await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      return null;
     } on FirebaseAuthException catch (e) {
-      // TODO: Pass Error Message to Alert Dialog
-      print(e.code);
+      return e.code;
     } catch (e) {
-      print(e.toString());
+      return e.toString();
     }
   }
 
   // Create Method for Sign Up
-  Future<void> emailSignUp({
+  Future<String?> emailSignUp({
     required String email,
     required String password,
   }) async {
@@ -30,11 +30,11 @@ class Authenticate {
         email: email,
         password: password,
       );
+      return null;
     } on FirebaseAuthException catch (e) {
-      // TODO: Pass Error Message to Alert Dialog
-      print(e.code);
+      return e.code;
     } catch (e) {
-      print(e.toString());
+      return e.toString();
     }
   }
 

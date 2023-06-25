@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:login_ui_page/auth/auth.dart';
-import 'package:login_ui_page/routes/routes.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
 import '../widgets/dialogs.dart';
 import '../widgets/image_button.dart';
@@ -89,18 +88,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 30,
                 ),
 
-                // Forgot Password Text
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 250),
-                //   child: MaterialButton(
-                //     onPressed: () {},
-                //     child: const Text(
-                //       "Forgot Password?",
-                //       style: TextStyle(fontSize: 15, color: Colors.blue),
-                //     ),
-                //   ),
-                // ),
-
                 const SizedBox(
                   height: 20,
                 ),
@@ -111,21 +98,36 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: SignInButton(
                     text: "Sign Up",
                     onPressed: () async {
-                      if (_passwordController.text ==
+                      // Check if Passwords are Same
+                      if (_passwordController.text !=
                           _confirmPasswordController.text) {
                         // Display Circular Progess
                         loadingCircle(context: context);
 
+                        showErrorMessage(
+                          errorMessage: "Passwords Do Not Match",
+                          context: context,
+                        );
+
+                        // Pop Circular Progess
+                        loadingCircle(context: context);
+                      } else {
+                        // Display Circular Progess
+                        loadingCircle(context: context);
+
                         // SignUp with fb
-                        await Authenticate().emailSignUp(
+                        String? errMes = await Authenticate().emailSignUp(
                           email: _usernameController.text,
                           password: _passwordController.text,
                         );
 
                         // Pop Circular Progress
                         Navigator.pop(context);
-                      } else {
-                        // TODO: Call Alert Dialog
+
+                        if (errMes != null) {
+                          showErrorMessage(
+                              errorMessage: errMes, context: context);
+                        }
                       }
                     },
                   ),
