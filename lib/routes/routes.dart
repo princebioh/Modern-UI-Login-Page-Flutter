@@ -8,15 +8,18 @@ class RouteManager {
   static const String authPage = '/';
   static const String loginPage = '/login';
   static const String signupPage = '/signup';
+  static const String dashboard = '/dashboard';
 
   static Route<dynamic> routeGenerator(RouteSettings settings) {
     switch (settings.name) {
       case authPage:
         return MaterialPageRoute(builder: (context) => const AuthWrapperPage());
-      case loginPage:
-        return MaterialPageRoute(builder: (context) => const LoginPage());
-      case signupPage:
-        return MaterialPageRoute(builder: (context) => const SignUpPage());
+      // case loginPage:
+      //   return MaterialPageRoute(builder: (context) => const LoginPage());
+      // case signupPage:
+      //   return MaterialPageRoute(builder: (context) =>  SignUpPage(onTap: ,));
+      case dashboard:
+        return MaterialPageRoute(builder: (context) => const DashBoard());
       default:
         throw const FormatException("Page Not Found");
     }

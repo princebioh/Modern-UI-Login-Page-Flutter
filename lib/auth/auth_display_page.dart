@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:login_ui_page/pages/dashboard.dart';
 import 'package:login_ui_page/pages/login_page.dart';
 
+import '../widgets/dialogs.dart';
+import 'login_signup.dart';
+
 // Page to Display Login/Register or Dashboard
 
 class AuthWrapperPage extends StatefulWidget {
@@ -24,7 +27,7 @@ class _AuthWrapperPageState extends State<AuthWrapperPage> {
         }
         // User Logged Out
         else {
-          return const LoginPage();
+          return const ShowLoginOrSignup();
         }
       },
     );

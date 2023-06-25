@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class InputField extends StatelessWidget {
   const InputField({
     super.key,
-    required this.showText,
+    required this.hideText,
     required this.textHint,
     required this.controller,
     required this.keyboardType,
   });
-  final bool showText;
+  final bool hideText;
   final String textHint;
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -19,7 +19,7 @@ class InputField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
         keyboardType: keyboardType,
-        obscureText: showText,
+        obscureText: hideText,
         controller: controller,
         decoration: InputDecoration(
           filled: true,

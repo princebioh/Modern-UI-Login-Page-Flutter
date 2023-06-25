@@ -4,8 +4,10 @@ class SignInButton extends StatefulWidget {
   const SignInButton({
     super.key,
     required this.onPressed,
+    required this.text,
   });
   final void Function()? onPressed;
+  final String text;
 
   @override
   State<SignInButton> createState() => _SignInButtonState();
@@ -20,9 +22,9 @@ class _SignInButtonState extends State<SignInButton> {
       onPressed: widget.onPressed,
       minWidth: 400,
       height: 75,
-      child: const Text(
-        "Sign In",
-        style: TextStyle(
+      child: Text(
+        widget.text,
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 20,
           fontWeight: FontWeight.bold,

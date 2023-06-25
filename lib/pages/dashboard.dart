@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:login_ui_page/auth/auth.dart';
 
@@ -18,8 +19,9 @@ class DashBoard extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text("Welcome to Dashboard"),
+      body: Center(
+        child:
+            Text("Lodded in as : ${FirebaseAuth.instance.currentUser?.email}"),
       ),
     );
   }

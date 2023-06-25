@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:login_ui_page/auth/auth.dart';
 import 'package:login_ui_page/routes/routes.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
+import '../widgets/dialogs.dart';
 import '../widgets/image_button.dart';
 import '../widgets/signin_button.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.onTap});
+  final void Function() onTap;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -52,8 +54,8 @@ class _LoginPageState extends State<LoginPage> {
 
                 // UserName TextInput Field
                 InputField(
-                  textHint: "Username",
-                  showText: false,
+                  textHint: "Email",
+                  hideText: false,
                   controller: _usernameController,
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -65,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Password TextInput Field
                 InputField(
                   textHint: "Password",
-                  showText: true,
+                  hideText: true,
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
                 ),
@@ -94,12 +96,14 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: SignInButton(
+                    text: "Sign In",
                     onPressed: () async {
+                      loadingCircle(context: context);
                       await Authenticate().emailSignIn(
                         email: _usernameController.text,
                         password: _passwordController.text,
                       );
-                      // Navigator.of(context).pushNamed(RouteManager.dashBoard);
+                      Navigator.pop(context);
                     },
                   ),
                 ),
@@ -167,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                     const Text("Not a member?"),
                     TextButton(
                       style: TextButton.styleFrom(),
-                      onPressed: () {},
+                      onPressed: widget.onTap,
                       child: const Text(
                         "Register now",
                         style: TextStyle(color: Colors.blue),

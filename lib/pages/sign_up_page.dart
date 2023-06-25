@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:login_ui_page/auth/auth.dart';
 import 'package:login_ui_page/routes/routes.dart';
 import 'package:login_ui_page/widgets/text_fields.dart';
+import '../widgets/dialogs.dart';
 import '../widgets/image_button.dart';
 import '../widgets/signin_button.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  const SignUpPage({super.key, required this.onTap});
+  final void Function() onTap;
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -52,51 +55,51 @@ class _SignUpPageState extends State<SignUpPage> {
 
                 // UserName TextInput Field
                 InputField(
-                  textHint: "Username",
-                  showText: false,
+                  textHint: "Email",
+                  hideText: false,
                   controller: _usernameController,
                   keyboardType: TextInputType.emailAddress,
                 ),
 
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
 
                 // Password TextInput Field
                 InputField(
                   textHint: "Password",
-                  showText: true,
+                  hideText: true,
                   controller: _passwordController,
                   keyboardType: TextInputType.text,
                 ),
 
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
 
                 // Confirm Password TextInput Field
                 InputField(
                   textHint: "Confirm Password",
-                  showText: true,
+                  hideText: true,
                   controller: _confirmPasswordController,
                   keyboardType: TextInputType.text,
                 ),
 
                 const SizedBox(
-                  height: 5,
+                  height: 30,
                 ),
 
                 // Forgot Password Text
-                Padding(
-                  padding: const EdgeInsets.only(left: 250),
-                  child: MaterialButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Forgot Password?",
-                      style: TextStyle(fontSize: 15, color: Colors.blue),
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 250),
+                //   child: MaterialButton(
+                //     onPressed: () {},
+                //     child: const Text(
+                //       "Forgot Password?",
+                //       style: TextStyle(fontSize: 15, color: Colors.blue),
+                //     ),
+                //   ),
+                // ),
 
                 const SizedBox(
                   height: 20,
@@ -106,8 +109,24 @@ class _SignUpPageState extends State<SignUpPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: SignInButton(
-                    onPressed: () {
-                      // Navigator.of(context).pushNamed(RouteManager.dashBoard);
+                    text: "Sign Up",
+                    onPressed: () async {
+                      if (_passwordController.text ==
+                          _confirmPasswordController.text) {
+                        // Display Circular Progess
+                        loadingCircle(context: context);
+
+                        // SignUp with fb
+                        await Authenticate().emailSignUp(
+                          email: _usernameController.text,
+                          password: _passwordController.text,
+                        );
+
+                        // Pop Circular Progress
+                        Navigator.pop(context);
+                      } else {
+                        // TODO: Call Alert Dialog
+                      }
                     },
                   ),
                 ),
@@ -145,7 +164,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
 
                 const SizedBox(
-                  height: 50,
+                  height: 40,
                 ),
 
                 // Google & Apple SignIn Buttons
@@ -172,12 +191,12 @@ class _SignUpPageState extends State<SignUpPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Not a member?"),
+                    const Text("Already a member?"),
                     TextButton(
                       style: TextButton.styleFrom(),
-                      onPressed: () {},
+                      onPressed: widget.onTap,
                       child: const Text(
-                        "Register now",
+                        "Login",
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
