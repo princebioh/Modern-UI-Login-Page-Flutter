@@ -4,13 +4,15 @@ class ImageButton extends StatelessWidget {
   const ImageButton({
     super.key,
     required this.imageLocation,
+    required this.onTap,
   });
   final String imageLocation;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {},
+      onPressed: onTap,
       color: Colors.grey.shade200,
       height: 100,
       minWidth: 100,

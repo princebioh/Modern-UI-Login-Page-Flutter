@@ -172,14 +172,18 @@ class _SignUpPageState extends State<SignUpPage> {
                 // Google & Apple SignIn Buttons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     ImageButton(
+                      onTap: () async {
+                        await Authenticate().googleSignIn();
+                      },
                       imageLocation: "assets/images/google.png",
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 40,
                     ),
                     ImageButton(
+                      onTap: () {},
                       imageLocation: "assets/images/apple.png",
                     ),
                   ],
